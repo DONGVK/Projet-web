@@ -1,0 +1,17 @@
+@font-face {
+    font-family: "Bebas Neue";
+    src: url("./src/police/BebasNeue-Regular.ttf");
+}
+  
+body {
+    font-family: "Bebas Neue", serif;
+}
+
+body{
+    background-image: linear-gradient(to right, #2e2d3f, #2b2b2b);
+}
+
+h1{
+    text-align:center;
+    color:white;
+}
