@@ -14,21 +14,17 @@
     <body>
         <div id="app">
         <header >
-            <h1><router-link to='/' class='title'>Portfolio</router-link></h1>
+          <router-link to='/' class='title'><h1>Portfolio</h1></router-link>
             <nav>
-                <router-link to='/register' v-if='!user.id'><div class="button">Inscription</div></router-link>
-                <router-link to='/login' v-if='!user.id'><div class="button">Connexion</div></router-link>
-                <router-link to='/searchprofil' v-if='!user.id'><div class="button">Profil</div></router-link>
+                <router-link to='/register' v-if='!user.id'><div class="buttons">Inscription</div></router-link>
+                <router-link to='/login' v-if='!user.id'><div class="buttons">Connexion</div></router-link>
+                <router-link to='/searchprofil' v-if='!user.id'><div class="buttons">Profil</div></router-link>
             </nav>
           </header>
 
           <main>
             <router-view></router-view>
           </main>
-
-          <footer>
-               Developped & designed by DONG & PONNOU
-          </footer>
         </div>
           <script src="/vue-application.js"></script>
     </body>

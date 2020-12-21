@@ -71,8 +71,8 @@ input:focus{
   align-items: center;
   justify-content: center;
   background-color: black;
-  margin-top: 8%;
-  margin-left: 35%;
+  margin-left: auto;
+  margin-right: auto;
   width: 400px;
   height: 100%;
   color: white;
