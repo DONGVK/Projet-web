@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <title> Portfolio</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <link rel="stylesheet" href="./style.css">
+        <!-- Load Vue followed by Vue Router -->
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/http-vue-loader/src/httpVueLoader.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vue-router/dist/vue-router.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    </head>
+    <body>
+        <div id="app">
+        <header >
+            <h1><router-link to='/' class='title'>Portfolio</router-link></h1>
+            <nav>
+                <router-link to='/register' v-if='!user.id'><div class="button">Inscription</div></router-link>
+                <router-link to='/login' v-if='!user.id'><div class="button">Connexion</div></router-link>
+                <router-link to='/searchprofil' v-if='!user.id'><div class="button">Profil</div></router-link>
+            </nav>
+          </header>
+
+          <main>
+            <router-view></router-view>
+          </main>
+
+          <footer>
+               Developped & designed by DONG & PONNOU
+          </footer>
+        </div>
+          <script src="/vue-application.js"></script>
+    </body>
+</html>
