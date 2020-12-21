@@ -2,6 +2,8 @@
   <div class="gradient-border" id="box">
     <form v-on:submit.prevent="addUser()">
         <h2> Inscription </h2>
+        <input class="border-gradient border-gradient-purple" type='text' v-model="newUsers.email" placeholder="Nom" required/>
+        <input class="border-gradient border-gradient-purple" type='text' v-model="newUsers.password" placeholder="Prénom" required/>
         <input class="border-gradient border-gradient-purple" type='email' v-model="newUsers.email" placeholder="Adresse mail" required/>
         <input class="border-gradient border-gradient-purple" type='password' v-model="newUsers.password" placeholder="Mot de passe" required/>
         <button class="border-gradient border-gradient-purple" type="submit">S'inscrire</button>
