@@ -17,7 +17,7 @@
           <label>Mot de passe</label>
         </div>
         <button class='button' type="submit">Se connecter</button>
-        <div class="error">Voulez-vous vous <router-link class='red' to='/register'>inscrire</router-link> ?</div>
+        <div class="error">Pas encore inscrit ? <router-link class='red' to='/register'>S'inscrire</router-link> </div>
 
     </form>
   </div>
@@ -43,6 +43,15 @@ module.exports = {
 </script>
  
 <style scoped>
+template{
+  animation-name:startingfade;
+  animation-duration:2s;
+}
+@keyframes startingfade {
+  0%{opacity:0}
+  100%{opacity: 100;}
+}
+
 * { box-sizing:border-box; }
 
 /* form starting stylings ------------------------------- */
@@ -95,7 +104,7 @@ input:focus ~ label, input:valid ~ label 		{
   width:0;
   bottom:1px; 
   position:absolute;
-  background:#d4d4d4; 
+  background-image:#d4d4d4; 
   transition:0.2s ease all; 
   -moz-transition:0.2s ease all; 
   -webkit-transition:0.2s ease all;
@@ -125,16 +134,16 @@ input:focus ~ .bar:before, input:focus ~ .bar:after {
   
 }
 
-/* active state */
+/* active state 
 input:focus ~ .highlight {
   -webkit-animation:inputHighlighter 0.3s ease;
   -moz-animation:inputHighlighter 0.3s ease;
   animation:inputHighlighter 0.3s ease;
-}
+}*/
 
-/* ANIMATIONS ================ */
+/* ANIMATIONS ================ 
 @-webkit-keyframes inputHighlighter {
-	from { background:#5264AE; }
+	from { background:#7a7a7a; }
   to 	{ width:0; background:transparent; }
 }
 @-moz-keyframes inputHighlighter {
@@ -142,9 +151,9 @@ input:focus ~ .highlight {
   to 	{ width:0; background:transparent; }
 }
 @keyframes inputHighlighter {
-	from { background:#5264AE; }
+	from { background:#7f7f81; }
   to 	{ width:0; background:transparent; }
-}
+}*/
 /*form input{
   border:none;
   background-color: rgb(24, 23, 23);

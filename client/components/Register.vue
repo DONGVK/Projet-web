@@ -2,10 +2,30 @@
   <div class="gradient-border" id="box">
     <form v-on:submit.prevent="addUser()">
         <h2> Inscription </h2>
-        <input class="border-gradient border-gradient-purple" type='text' v-model="newUsers.email" placeholder="Nom" required/>
-        <input class="border-gradient border-gradient-purple" type='text' v-model="newUsers.password" placeholder="Prénom" required/>
-        <input class="border-gradient border-gradient-purple" type='email' v-model="newUsers.email" placeholder="Adresse mail" required/>
-        <input class="border-gradient border-gradient-purple" type='password' v-model="newUsers.password" placeholder="Mot de passe" required/>
+        <div class="group">
+          <input type='text' v-model="connexionUser.lastname"  required/>
+          <span class="highlight"></span>
+          <span class="bar"></span>
+          <label>Nom</label>
+        </div>
+        <div class="group">
+          <input type='text' v-model="connexionUser.firstname"  required/>
+          <span class="highlight"></span>
+          <span class="bar"></span>
+          <label>Prénom</label>
+        </div>
+        <div class="group">
+          <input type='text' v-model="connexionUser.email"  required/>
+          <span class="highlight"></span>
+          <span class="bar"></span>
+          <label>Email</label>
+        </div>
+        <div class="group">
+          <input type='password' v-model="connexionUser.password"  required/>
+          <span class="highlight"></span>
+          <span class="bar"></span>
+          <label>Mot de passe</label>
+        </div>
         <button class="border-gradient border-gradient-purple" type="submit">S'inscrire</button>
     </form>
   </div>
@@ -30,6 +50,83 @@ module.exports = {
 </script>
  
 <style scoped>
+.group 			  { 
+  position:relative; 
+  margin-bottom:45px; 
+}
+input 				{
+  font-size:18px;
+  color:white;
+  padding:10px 10px 10px 5px;
+  display:block;
+  width:300px;
+  background-color:rgba(39, 39, 39, 0.733);
+  border:none;
+  border-bottom:1px solid #757575;
+  font-family:'Champagne';
+}
+input:focus 		{ outline:none; }
+
+/* LABEL ======================================= */
+label 				 {
+  color:rgb(235, 231, 231); 
+  font-size:18px;
+  font-weight:normal;
+  font-family:'Champagne';
+  position:absolute;
+  pointer-events:none;
+  left:5px;
+  top:10px;
+  transition:0.2s ease all; 
+  -moz-transition:0.2s ease all; 
+  -webkit-transition:0.2s ease all;
+}
+
+/* active state */
+input:focus ~ label, input:valid ~ label 		{
+  top:-20px;
+  font-size:14px;
+  color:#e2e3e5;
+  
+}
+
+/* BOTTOM BARS ================================= */
+.bar 	{ position:relative; display:block; width:300px; }
+.bar:before, .bar:after 	{
+  content:'';
+  height:2px; 
+  width:0;
+  bottom:1px; 
+  position:absolute;
+  background-image:#d4d4d4; 
+  transition:0.2s ease all; 
+  -moz-transition:0.2s ease all; 
+  -webkit-transition:0.2s ease all;
+}
+.bar:before {
+  left:50%;
+}
+.bar:after {
+  right:50%; 
+}
+
+/* active state */
+input:focus ~ .bar:before, input:focus ~ .bar:after {
+  width:50%;
+  
+}
+
+/* HIGHLIGHTER ================================== */
+.highlight {
+  position:absolute;
+  height:60%; 
+  width:100px; 
+  top:25%; 
+  left:0;
+  pointer-events:none;
+  opacity:0.5;
+  
+}
 form input{
   border:none;
   background-color: rgb(24, 23, 23);
