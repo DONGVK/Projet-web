@@ -6,7 +6,8 @@
             <div class="center">
                 <div id="social-test">
                     <ul class="social">
-                        <li><a href="https://github.com/DONGVK/Projet-web"><i class="fa fa-github" aria-hidden="true"></a></i></li>
+                        <li><a href="https://github.com/DONGVK/Projet-web" target="_blank"><i class="fa fa-github"  aria-hidden="true"></a></i></li>
+                        <li><a href="#" onclick="window.open('https://fr.linkedin.com/in/wilfried-ponnou-66a191195');window.open('https://www.linkedin.com/in/viet-khoi-jean-dong-a91b69198/');"><i class="fa fa-linkedin" aria-hidden="true"></a></i></li>
                     </ul>
                 </div>
             </div>
@@ -46,16 +47,20 @@ h2{
 
 .subtitle{
     font-family: "Champagne";
-    font-size: 500%;
-    -webkit-animation: greyeffect 5s infinite;
+    font-size: 75px;
+    animation-name: greyeffect ;
+    animation-duration: 10s;
+    animation-iteration-count:infinite;
+    animation-timing-function:linear;
+
 }
 
 @keyframes greyeffect{
-    0%{color: rgb(15, 15, 15);}
-    50%{color: rgb(65, 65, 65);}
+    0%{color: rgb(15, 15, 15);opacity:20}
+   /* 25%{color: rgb(65, 65, 65);}*/
     50%{color: rgb(82, 82, 82);}	
-    50%{color: rgb(124, 124, 124);}	
-    50%{color: rgb(204, 204, 204);}
-    50%{color: rgb(255, 255, 255);}
+  /*  75%{color: rgb(124, 124, 124);}	*/
+    100%{color: rgb(204, 204, 204);opacity:100}
+    /*50%{color: rgb(255, 255, 255);}*/
  }
 </style>

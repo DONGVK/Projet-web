@@ -1,13 +1,13 @@
 const express = require('express')
 const router = express.Router()
-const articles = require('../data/articles.js')
+/*const articles = require('../data/articles.js')*/
 const bcrypt = require('bcrypt')
 const { Client } = require('pg')
 
 const client = new Client({
  user: 'postgres',
  host: 'localhost',
- password: 'youngblood123',
+ password: 'secret',
  database: 'TP5'
 })
 
