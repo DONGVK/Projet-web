@@ -3,7 +3,7 @@
     <form v-on:submit.prevent="connexion()">
       
         <h2 > Connexion  </h2>
-        <div class="error">Voulez-vous vous <router-link class='red' to='/register'>inscrire</router-link> ?</div>
+        
         <div class="group">
           <input type='text' v-model="connexionUser.email"  required/>
           <span class="highlight"></span>
@@ -17,6 +17,7 @@
           <label>Mot de passe</label>
         </div>
         <button class='button' type="submit">Se connecter</button>
+        <div class="error">Voulez-vous vous <router-link class='red' to='/register'>inscrire</router-link> ?</div>
 
     </form>
   </div>
@@ -59,6 +60,7 @@ input 				{
   background-color:rgba(39, 39, 39, 0.733);
   border:none;
   border-bottom:1px solid #757575;
+  font-family:'Champagne';
 }
 input:focus 		{ outline:none; }
 
