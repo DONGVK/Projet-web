@@ -62,105 +62,64 @@ template{
 }
 input 				{
   font-size:18px;
-  color:white;
   padding:10px 10px 10px 5px;
   display:block;
   width:300px;
-  background-color:rgba(39, 39, 39, 0.733);
   border:none;
-  border-bottom:1px solid #757575;
+  color:white;
   font-family:'Champagne';
+  background-color:rgba(71, 71, 71, 0.493);
+  border-bottom:1px solid #757575;
 }
 input:focus 		{ outline:none; }
 
 /* LABEL ======================================= */
 label 				 {
-  color:rgb(235, 231, 231); 
+  color:rgb(255, 255, 255); 
   font-size:18px;
-  font-weight:normal;
+  font-weight:bold;
   font-family:'Champagne';
   position:absolute;
   pointer-events:none;
   left:5px;
   top:10px;
-  transition:0.2s ease all; 
-  -moz-transition:0.2s ease all; 
-  -webkit-transition:0.2s ease all;
+  transition:0.6s ease all; 
+  -moz-transition:0.6s ease all; 
+  -webkit-transition:0.6s ease all;
 }
 
 /* active state */
 input:focus ~ label, input:valid ~ label 		{
   top:-20px;
   font-size:14px;
-  color:#e2e3e5;
-  
+  color:#ffffff;
 }
 
 /* BOTTOM BARS ================================= */
 .bar 	{ position:relative; display:block; width:300px; }
 .bar:before, .bar:after 	{
   content:'';
-  height:2px; 
+  height:3px; 
   width:0;
-  bottom:1px; 
+  bottom:0px; 
   position:absolute;
-  background-image:#d4d4d4; 
-  transition:0.2s ease all; 
-  -moz-transition:0.2s ease all; 
-  -webkit-transition:0.2s ease all;
+  background:linear-gradient(to left, #743ad5, #d53a9d); 
+  transition:0.6s ease all; 
+  -moz-transition:0.6s ease all; 
+  -webkit-transition:0.6s ease all;
 }
 .bar:before {
-  left:50%;
+  left:0%;
 }
 .bar:after {
-  right:50%; 
+  right:0%; 
 }
 
 /* active state */
 input:focus ~ .bar:before, input:focus ~ .bar:after {
-  width:50%;
-  
+  width:100%;
 }
 
-/* HIGHLIGHTER ================================== */
-.highlight {
-  position:absolute;
-  height:60%; 
-  width:100px; 
-  top:25%; 
-  left:0;
-  pointer-events:none;
-  opacity:0.5;
-  
-}
-
-/* active state 
-input:focus ~ .highlight {
-  -webkit-animation:inputHighlighter 0.3s ease;
-  -moz-animation:inputHighlighter 0.3s ease;
-  animation:inputHighlighter 0.3s ease;
-}*/
-
-/* ANIMATIONS ================ 
-@-webkit-keyframes inputHighlighter {
-	from { background:#7a7a7a; }
-  to 	{ width:0; background:transparent; }
-}
-@-moz-keyframes inputHighlighter {
-	from { background:#5264AE; }
-  to 	{ width:0; background:transparent; }
-}
-@keyframes inputHighlighter {
-	from { background:#7f7f81; }
-  to 	{ width:0; background:transparent; }
-}*/
-/*form input{
-  border:none;
-  background-color: rgb(24, 23, 23);
-  color: white;
-  height: 6vh;
-  width: 80%;
-}*/
 
 .red{
   color: rgb(255, 255, 255);
@@ -172,36 +131,20 @@ form{
   text-align:center;
 }
 
-/*input{
-  margin-bottom:10px;
-  text-align: center;
-  color:white;
-  margin-left:auto;
-  margin-right:auto;
-  background-color:rgb(26,26,26);
-  opacity: 0.5;
-  border:none;
- border-bottom:1px solid white;
-  font-family: "Bebas Neue";
-}
 
-input:focus{
-  opacity: 1;
-}*/
 
 #box {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
- /* background-color: rgba(94, 94, 94, 0.575); */
   margin-left: auto;
   margin-right: auto;
   width: 400px;
   height: 100%;
   color: white;
   font-size: 2.5rem;
-  background-image: linear-gradient(	 rgba(56, 56, 56, 1),rgba(5, 5, 5, 0.1));
+  background-image: linear-gradient(	 rgba(56, 56, 56, 0.295),rgba(5, 5, 5, 0.1));
   box-shadow: 0px 0px 10px -1px rgba(0,0,0,0.92);
   border-radius:1%
 }
@@ -222,20 +165,20 @@ input:focus{
   position: relative;
   background-color: #1a1a1a;
   border: none;
-  color: rgb(223, 222, 222);
+  color: rgb(255, 255, 255);
   padding: 10px;
   /*width: 200px;*/
   text-align: center;
   transition-duration: 0.4s;
   overflow: hidden;
-  box-shadow: 0 5px 15px #1b334b;
+ /* box-shadow: 0 5px 15px #1b334b;*/
   border-radius: 4px;
   margin-bottom:15px;
 }
 
 .button:hover {
   background: rgb(51, 51, 51);
-  box-shadow: 0px 2px 10px 1px #e0e0e0b7;
+  box-shadow: 0px 2px 10px 1px rgba(253, 253, 253, 0.774);
   color: rgb(231, 231, 231);
 }
 
