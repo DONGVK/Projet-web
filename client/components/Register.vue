@@ -3,13 +3,13 @@
     <form v-on:submit.prevent="addUser()">
         <h2> Inscription </h2>
         <div class="group">
-          <input type='text' v-model="newUsers.Lastname" required/>
+          <input type='text' v-model="newUsers.lastname" required/>
           <span class="highlight"></span>
           <span class="bar"></span>
           <label>Nom</label>
         </div>
         <div class="group">
-          <input  type='text' v-model="newUsers.Fisrtname"  required/>
+          <input  type='text' v-model="newUsers.firstname"  required/>
           <span class="highlight"></span>
           <span class="bar"></span>
           <label>Prénom</label>
@@ -36,8 +36,10 @@ module.exports = {
   data () {
     return {
         newUsers: {
-        email: '',
-        password: ''
+          firstname: '',
+          lastname: '',
+          email: '',
+          password: ''
       }
     }
   },

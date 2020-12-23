@@ -35,7 +35,6 @@ module.exports = {
   },
   methods: {
       connexion() {
-        console.log(this.user)
         this.$emit('connexion-user', this.connexionUser)
       }
   }
