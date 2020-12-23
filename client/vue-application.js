@@ -2,12 +2,14 @@ const Home = window.httpVueLoader('./components/Home.vue')
 const SearchProfil = window.httpVueLoader('./components/SearchProfil.vue')
 const Register = window.httpVueLoader('./components/Register.vue')
 const Login = window.httpVueLoader('./components/Login.vue')
+const Profil = window.httpVueLoader('./components/Profil.vue')
 
 const routes = [
   { path: '/', component: Home },
   { path: '/searchprofil', component: SearchProfil },
   { path: '/register', component: Register },
-  { path: '/login', component: Login }
+  { path: '/login', component: Login },
+  { path: '/profil', component: Profil}
 ]
 
 const router = new VueRouter({
@@ -18,7 +20,16 @@ var app = new Vue({
   router,
   el: '#app',
   data: {
-    user:{id: null, connected: null}
+    user:{id: null, connected: null, firstname: '', lastname: ''}
+  },
+  async mounted(){
+    const connected = await axios.get('/api/me')
+    if(connected.data.id != null){
+      this.user.id = connected.data.id
+      this.user.connected = true
+      this.user.firstname = connected.data.firstname
+      this.user.lastname = connected.data.lastname
+    }
   },
   methods: {
     async addUser (newUser) { // User registers
@@ -26,8 +37,14 @@ var app = new Vue({
       console.log(res)
     },
     async connexionUser(user){//User log in
-      const res = await axios.post('api/login', {email: user.email, password: user.password})
-      console.log(res)
+      try{
+        const res = await axios.post('/api/login', {email: user.email, password: user.password})
+        this.user ={id: res.data.id, connected: true, firstname: res.data.first_name, lastname: res.data.last_name}
+        this.$router.push({ path: '/profil' })
+      }catch (error){
+        console.log(error)
+        this.user.connected = false
+      }
     }
   }
 })

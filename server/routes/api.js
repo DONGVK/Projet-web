@@ -13,6 +13,8 @@ const client = new Client({
 class User {
   constructor () {
     this.id = null
+    this.firstname = null,
+    this.lastname = null,
     this.connected = false
     this.createdAt = new Date()
     this.updatedAt = new Date()
@@ -49,8 +51,14 @@ async function addUser(firstname, lastname, email, password) { // add the user i
 }
 
 /* QUERY */
+router.get('/me', async function(req, res){
+  if(req.session.user.id == 'undefined' || req.session.user.id === null){
+    res.status(400).json({message: 'Not connected', id: null})
+    return
+  }
+  res.json({id: req.session.user.id, firstname: req.session.user.firstname, lastname: req.session.user.lastname})
+})
 router.post('/login', async function(req, res){
-  console.log(hash)
   const email = req.body.email
   const password = req.body.password
   if (req.session.user.id !== null) { /// Vérifie si l'utilisateur ne s'est pas encore connecté
@@ -65,10 +73,10 @@ router.post('/login', async function(req, res){
   }
   const resp = await verifyUser(email).then((value)=> { return value}).then((value)=>{return value})// renvoie true si l'email existe dans la BDD
   if(resp === false){
-    res.status(501).json({ message: 'User does not exist'})
+    res.status(500).json({ message: 'User does not exist'})
     return
   }
-  const sql = "SELECT id, password FROM users WHERE email=$1"
+  const sql = "SELECT id, password, first_name, last_name FROM users WHERE email=$1"
   const result = await client.query({
     text: sql,
     values: [email] // ici name n'est pas concaténée à notre requête
@@ -78,7 +86,10 @@ router.post('/login', async function(req, res){
     res.status(400).json({ message: 'Password incorrect', respond: false})
     return
   }
+  console.log(result.rows)
   req.session.user.id = parseInt(result.rows[0].id)//Prendre la valeur de l'id
+  req.session.user.firstname = result.rows[0].first_name
+  req.session.user.lastname = result.rows[0].last_name
   res.json({id: result.rows[0].id, connect: true})
 })
 
