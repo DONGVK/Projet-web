@@ -1,6 +1,11 @@
 <template>
   <div class="centered">
     <h2 class="subtitle">"Explore it."</h2>
+      <div class='boutons'>
+        <router-link to='/register' v-if='user.id == null'><div class="buttons">Inscription</div></router-link>
+        <router-link to='/login' v-if='user.id == null'><div class="buttons">Connexion</div></router-link>
+        <router-link to='/searchprofil' v-if='user.id == null'><div class="buttons">Profil</div></router-link>
+      </div>
         <h4 class='signature'>Developped and Designed by Viet Khoi DONG and Wilfried PONNOU</h4>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
             <div class="center">
@@ -28,6 +33,16 @@ module.exports = {
 </script>
 
 <style scoped>
+.boutons{
+  margin-top:0%
+ 
+}
+.boutons *{
+  margin:30px;
+}
+.centered{
+  text-align:center;
+}
 @import url('../style.css');
 body{
     animation-name:startingfade;

@@ -85,7 +85,7 @@ nav{
   content:'';
   width:0%;
   height:4px;
-  background: linear-gradient(to left, #743ad5, #d53a9d);
+  background: linear-gradient(to left, #e7e7e7, #999999);
   position:absolute;
   top:0%;left:50%;
   border-radius:10px;

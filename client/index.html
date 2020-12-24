@@ -15,13 +15,7 @@
         <div id="app">
         <header >
           <router-link to='/' class='title'><h1>Portfolio</h1></router-link>
-            <nav>
-                <router-link to='/register' v-if='user.id == null'><div class="buttons">Inscription</div></router-link>
-                <router-link to='/login' v-if='user.id == null'><div class="buttons">Connexion</div></router-link>
-                <router-link to='/searchprofil' v-if='user.id == null'><div class="buttons">Profil</div></router-link>
-            </nav>
-          </header>
-
+        </header>
           <main>
             <router-view
               :user="user"
