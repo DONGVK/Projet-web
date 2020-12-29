@@ -1,7 +1,7 @@
 <template>
 <div>
     <div class="centered">
-      <input placeholder="Rechercher un profil" class="search" type="text"/>
+      <input placeholder="Rechercher un profil" class="search" type="search"/>
     </div>
     <div class="container">
       <div class="item">DONG's profil</div>
@@ -40,23 +40,31 @@ module.exports = {
 }
 
 .search{
-    width: 60%;
+    width: 50%;
     text-align: center;
     font-size: larger;
+    font-family:'Champagne';
     color: white;
-    border: solid rgb(172, 172, 172);
-    border-radius: 10px;
+    border:none;
+    border-bottom: 2px solid rgb(172, 172, 172);
+   /* border-radius: 20px;*/
     background-color: transparent;
     outline: none;
+    border-radius:20px;
 }
-
+/*.search:hover{
+  font-weight:bold;
+  background-color:antiquewhite;
+  color:black;
+}*/
 .search:focus {
-    border: solid white;
-    border-radius: 10px;
+    border-bottom: solid white;
+    font-weight:bold;
+  /*  border-radius: 10px;*/
 }
  /* Item block */
 .container{
-    margin-top: 1%;
+    margin-top: 3%;
     height: 20%;
     width: 100%;
     text-align: center;
