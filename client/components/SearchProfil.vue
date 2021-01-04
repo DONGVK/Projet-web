@@ -41,26 +41,29 @@ module.exports = {
 
 .search{
     width: 50%;
+    height:50px;
     text-align: center;
     font-size: larger;
     font-family:'Champagne';
     color: white;
     border:none;
-    border-bottom: 2px solid rgb(172, 172, 172);
-   /* border-radius: 20px;*/
-    background-color: transparent;
     outline: none;
-    border-radius:20px;
+    /*border-bottom: 2px solid rgb(172, 172, 172);
+    border-radius: 20px;
+    border-radius:20px;*/
+    background-color: transparent;
+    
 }
-/*.search:hover{
+
+.search:hover{
   font-weight:bold;
   background-color:antiquewhite;
   color:black;
-}*/
+}
 .search:focus {
     border-bottom: solid white;
     font-weight:bold;
-  /*  border-radius: 10px;*/
+    border-radius: 10px;
 }
  /* Item block */
 .container{
