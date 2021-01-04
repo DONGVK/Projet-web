@@ -21,7 +21,7 @@ var app = new Vue({
   el: '#app',
   data: {
     user:{id: null, connected: null, firstname: '', lastname: ''},
-    profil: [],
+    profils: [],
   },
   async mounted(){
     const res = await axios.get('/api/profils')
