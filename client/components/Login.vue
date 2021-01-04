@@ -1,7 +1,6 @@
 <template>
-  <div class="gradient-border" id="box">
+ <div class="gradient-border" id="box">
     <form v-on:submit.prevent="connexion()">
-      
         <h2 > Connexion  </h2>
         
         <div class="group">
@@ -102,7 +101,7 @@ input:focus ~ label, input:valid ~ label 		{
   width:0;
   bottom:0px; 
   position:absolute;
-  background:linear-gradient(to left, #743ad5, #d53a9d); 
+  background:linear-gradient(to left, #e7e7e7, #999999); 
   transition:0.6s ease all; 
   -moz-transition:0.6s ease all; 
   -webkit-transition:0.6s ease all;

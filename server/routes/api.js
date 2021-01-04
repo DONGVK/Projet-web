@@ -6,15 +6,15 @@ const { Client } = require('pg')
 const client = new Client({
  user: 'postgres',
  host: 'localhost',
- password: 'youngblood123',
+ password: 'secret',
  database: 'portfolio'
 })
 
 class User {
   constructor () {
     this.id = null
-    this.firstname = null,
-    this.lastname = null,
+    this.firstname = null
+    this.lastname = null
     this.connected = false
     this.createdAt = new Date()
     this.updatedAt = new Date()
