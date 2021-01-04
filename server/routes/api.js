@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const bcrypt = require('bcrypt')
+const profils = require('../data/profils.js')
 const { Client } = require('pg')
 
 const client = new Client({
@@ -31,6 +32,7 @@ router.use((req, res, next) => {
   }
   next()
 })
+
 /* FUNCTION THAT USED BY QUERY */
 async function verifyUser(email){ // Verify if the user is registered or not
   const sql = 'SELECT * FROM Users WHERE email = $1'
@@ -51,6 +53,8 @@ async function addUser(firstname, lastname, email, password) { // add the user i
 }
 
 /* QUERY */
+
+  /* USER */
 router.get('/me', async function(req, res){
   if(req.session.user.id == 'undefined' || req.session.user.id === null){
     res.status(400).json({message: 'Not connected', id: null})
@@ -114,6 +118,20 @@ router.post('/register', async function(req, res){
   }
   addUser(firstname, lastname, email, password)
   res.json({message: 'User registered'})
+})
+
+router.get('/logout', async function(req, res){
+  if(req.session.user.id === null){
+    res.status(400).json({message: 'User not connected'})
+    return
+  }
+  req.session.destroy()
+  res.json({message: "Successfuly disconnected"})
+})
+  /* PROFILS */
+
+router.get('/profils', async function(req, res){
+  res.json(profils)
 })
 
 module.exports = router
