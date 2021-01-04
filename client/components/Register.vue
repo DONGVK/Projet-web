@@ -1,33 +1,84 @@
 <template>
-  <div class="gradient-border" id="box">
+  <div class="formbox">
+    <div class="firstform">
     <form v-on:submit.prevent="addUser()">
         <h2> Inscription </h2>
-        <div class="group">
-          <input type='text' v-model="newUsers.lastname" required/>
-          <span class="highlight"></span>
-          <span class="bar"></span>
-          <label>Nom</label>
-        </div>
-        <div class="group">
-          <input  type='text' v-model="newUsers.firstname"  required/>
-          <span class="highlight"></span>
-          <span class="bar"></span>
-          <label>Prénom</label>
-        </div>
-        <div class="group">
-          <input  type='text' v-model="newUsers.email"  required/>
-          <span class="highlight"></span>
-          <span class="bar"></span>
-          <label>Adresse mail</label>
-        </div>
-        <div class="group">
-          <input type='password' v-model="newUsers.password"  required/>
-          <span class="highlight"></span>
-          <span class="bar"></span>
-          <label>Mot de passe</label>
-        </div>
-        <button  class='button' type="submit">S'inscrire</button>
+          <div class="group">
+            <input type='text' v-model="newUsers.lastname" required/>
+            <span class="highlight"></span>
+            <span class="bar"></span>
+            <label>Nom</label>
+          </div>
+          <div class="group">
+            <input  type='text' v-model="newUsers.firstname"  required/>
+            <span class="highlight"></span>
+            <span class="bar"></span>
+            <label>Prénom</label>
+          </div>
+          <div class="group">
+            <input  type='text' v-model="newUsers.email"  required/>
+            <span class="highlight"></span>
+            <span class="bar"></span>
+            <label>Adresse mail</label>
+          </div>
+          <div class="group">
+            <input type='password' v-model="newUsers.password"  required/>
+            <span class="highlight"></span>
+            <span class="bar"></span>
+            <label>Mot de passe</label>
+          </div>
+          <button  class='button' type="submit">Suivant</button>
     </form>
+    </div>
+    <div class="secondform">
+      <form>
+        <h2> Informations du Profil <h2>
+          <div class="group">
+            <span class="highlight"></span>
+            <label>Domaine</label>
+              <select name="domains">
+                <option value="">Votre domaine</option>
+                <option value="SE">Software Engineering</option>
+                <option value="BIA">Business Intelligence and Analytics</option>
+                <option value="DT">Digital Transformation</option>
+                <option value="CYB">Cybersécurité</option>
+                <option value="NCI">Networks and Cloud Infrastructure</option>
+                <option value="BDML">Big Data and Machine Learning</option>
+                <option value="ITF">IT for finance</option>
+                <option value="BF">Bio Informatique</option>
+                <option value="SRD">Systèmes robotiques et drones</option>
+                <option value="TI">Transports intelligents</option>
+                <option value="IRV">Imagerie et Réalité Virtuelle</option>
+                <option value="ES">Energie et Smartgrids</option>
+              </select>
+          </div>
+          <div class="group">
+            <div class='competenceitems'>
+              <ul class='compétencelist'>
+                <h4>Vos compétences<h4>
+                  <li  v-for="compétence of compétences" v-bind:key="compétence" >{{compétence}}<button v-on:click="supprimer(compétence)">❌</button></li>
+              </ul>
+              <input type="text" v-model="compétencetoadd" placeholder="ajouter une compétence" required/>
+              <button class='button' v-on:click="ajouter()">Ajouter</button>
+            </div>
+            <div class='competencemodifier'>
+              <select >
+                  <option v-for="(compétence,index) of compétences" v-bind:key="compétence" >{{compétence}}</option>
+              </select>
+              <textarea v-model="remplaceur"> </textarea><button class='button' v-on:click="modifier(remplaceur)">Modifier</button>
+            </div>
+          </div>
+        
+          
+          <div class="group">
+            <h4>Expérience<h4>
+            <textarea id="exp" name="experience">
+            </textarea>
+            <span class="highlight"></span>
+            <span class="bar"></span>
+           
+          </div>
+          <button  class='button' type="submit">S'inscrire</button>
   </div>
 </template>
  
@@ -40,25 +91,52 @@ module.exports = {
           lastname: '',
           email: '',
           password: ''
-      }
+      },
+      compétences:['html', 'css'],
+      compétencetoadd:'',
+      remplaceur:''
     }
   },
   methods: {
       addUser() {
         this.$emit('add-user', this.newUsers)
+      },
+      ajouter(){
+        if(this.compétencetoadd===''){console.log('Veuillez renseigner une compétence valide')}
+        else{
+        this.compétences.push(this.compétencetoadd)
+        }
+      },
+      modifier(remplaceur){
+        var index=this.compétences.findIndex(element=>element===compétence);
+        this.compétences(index)=this.remplaceur
+      },
+      supprimer(compétence){
+        var index=this.compétences.findIndex(element=>element ===compétence);//https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex
+        this.compétences.splice(index,1);
       }
   }
 }
 </script>
  
 <style scoped>
+.compétencelist{
+  font-family:'Champagne';
+  font-size:18px;
+}
+h4{
+  font-family:'Champagne';
+  font-size:18px;
+  text-align:center;
+}
+
 /* form starting stylings ------------------------------- */
 
 .group 			  { 
   position:relative; 
   margin-bottom:45px; 
 }
-input 				{
+input,textarea 				{
   font-size:18px;
   padding:10px 10px 10px 5px;
   display:block;
@@ -102,7 +180,7 @@ input:focus ~ label, input:valid ~ label 		{
   width:0;
   bottom:0px; 
   position:absolute;
-  background:linear-gradient(to left, #743ad5, #d53a9d); 
+  background:linear-gradient(to left, #e7e7e7, #999999); 
   transition:0.6s ease all; 
   -moz-transition:0.6s ease all; 
   -webkit-transition:0.6s ease all;
@@ -126,18 +204,18 @@ form{
 
 
   @import url('https://fonts.googleapis.com/css?family=Raleway:200');
-#box {
+.formbox {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
   margin-left: auto;
   margin-right: auto;
   width: 80%;
   height: 100%;
   color: white;
   font-size: 2.5rem;
-  background-image: linear-gradient(	 rgba(56, 56, 56, 0.295),rgba(5, 5, 5, 1));
+  background-image: linear-gradient(rgba(56, 56, 56, 0.295),rgba(5, 5, 5, 1));
   box-shadow: 0px 0px 10px -1px rgba(0,0,0,0.92);
   border-radius:1%
 

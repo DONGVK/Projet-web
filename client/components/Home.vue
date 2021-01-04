@@ -6,8 +6,8 @@
             <div class="center">
                 <div id="social-test">
                     <ul class="social">
-                        <li><a href="https://github.com/DONGVK/Projet-web" target="_blank"><i class="fa fa-github"  aria-hidden="true"></a></i></li>
-                        <li><a href="#" onclick="window.open('https://fr.linkedin.com/in/wilfried-ponnou-66a191195');window.open('https://www.linkedin.com/in/viet-khoi-jean-dong-a91b69198/');"><i class="fa fa-linkedin" aria-hidden="true"></a></i></li>
+                        <li class="link"><a href="https://github.com/DONGVK/Projet-web" target="_blank"><i class="fa fa-github"  aria-hidden="true"></a></i></li>
+                        <li class="link"><a href="#" onclick="window.open('https://fr.linkedin.com/in/wilfried-ponnou-66a191195');window.open('https://www.linkedin.com/in/viet-khoi-jean-dong-a91b69198/');"><i class="fa fa-linkedin" aria-hidden="true"></a></i></li>
                     </ul>
                 </div>
             </div>

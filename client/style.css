@@ -85,7 +85,7 @@ nav{
   content:'';
   width:0%;
   height:4px;
-  background: linear-gradient(to left, #743ad5, #d53a9d);
+  background: linear-gradient(to left, #e7e7e7, #999999);
   position:absolute;
   top:0%;left:50%;
   border-radius:10px;
@@ -117,10 +117,10 @@ nav{
 .social {
    padding-left: 0px;
 }
-li {
+.link {
   display: inline-block;
 }
-li a {
+.link a {
   
   color: rgba(256, 256, 256, 0.6);
   border-radius: 6px;
@@ -137,11 +137,12 @@ li a {
   transition: ease 0.7s;
   box-shadow: 0 -1px 4px rgba(0, 0, 0, 1);
   }
-li a:hover {
+.link a:hover {
   color: rgba(256, 256, 256, 1);
   border: 1px solid rgba(256, 256, 256, 1);
   transform: translateY(-10px);
 }
+
 
 /* Hamburger menu */
 .icon{
