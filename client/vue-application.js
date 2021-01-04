@@ -20,9 +20,12 @@ var app = new Vue({
   router,
   el: '#app',
   data: {
-    user:{id: null, connected: null, firstname: '', lastname: ''}
+    user:{id: null, connected: null, firstname: '', lastname: ''},
+    profil: [],
   },
   async mounted(){
+    const res = await axios.get('/api/profils')
+    this.profils = res.data
     const connected = await axios.get('/api/me')
     if(connected.data.id != null){
       this.user.id = connected.data.id
@@ -44,6 +47,16 @@ var app = new Vue({
       }catch (error){
         console.log(error)
         this.user.connected = false
+      }
+    },
+    async disconnectionUser(){
+      try{
+        const res = await axios.get('api/logout')
+        console.log(res)
+        this.user = {id: null, connected: null, firstname: '', lastname: ''}
+        this.$router.push('/')
+      }catch(error){
+        console.log(error)
       }
     }
   }
