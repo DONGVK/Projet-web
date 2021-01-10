@@ -22,6 +22,7 @@ var app = new Vue({
   data: {
     user:{id: null, connected: null, firstname: '', lastname: ''},
     profils: [],
+    profil: []
   },
   async mounted(){
     const res = await axios.get('/api/profils')
@@ -32,6 +33,12 @@ var app = new Vue({
       this.user.connected = true
       this.user.firstname = connected.data.firstname
       this.user.lastname = connected.data.lastname
+    }
+    try{
+      const pro = await axios.get('/api/profil/' + this.user.id)
+      this.profil = pro.data
+    }catch(error){
+      console.log('no profil yet')
     }
   },
   methods: {
@@ -58,6 +65,6 @@ var app = new Vue({
       }catch(error){
         console.log(error)
       }
-    }
+    },
   }
 })
