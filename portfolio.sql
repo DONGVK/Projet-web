@@ -23,4 +23,10 @@ VALUES (
     'admin',
     'adresse@mail.com',
     '$2b$10$BHoNLZSU1Q5fntQNQ5pyluhtlduIyz8dCoJD7sNzxXqUuCYzu3BJO'
+),
+(
+    'Jean',
+    'DONG',
+    'jean@dong.com',
+    '$2b$10$xC1GtrzOo90/TLor44jkqeWbOvvmlwpU0v2hRe4tLg3Gd6xlF9A5W'
 );

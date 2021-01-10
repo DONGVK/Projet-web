@@ -21,17 +21,19 @@
                 <router-link to='/searchprofil' v-if='user.id == null'><div class="buttons">Profil</div></router-link>
             </nav>
             <button v-if="user.id !== null" class="ham"></button>
-            <div v-if='user.id !== null' class="navbar">
-              <ul>
-                <li><a v-on:click='disconnectionUser()'><img src="./src/img/logout.png" class="icon"></a></li>
-              </ul>
-            </div>
           </header>
+          
+          <div v-if='user.id !== null' class="navbar">
+            <ul>
+              <li><a v-on:click='disconnectionUser()'><img src="./src/img/logout.png" class="icon"></a></li>
+            </ul>
+          </div>
 
           <main>
             <router-view
               :user="user"
               :profils="profils"
+              :profil="profil"
               @add-user="addUser"
               @connexion-user="connexionUser"
             ></router-view>

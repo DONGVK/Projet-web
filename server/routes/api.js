@@ -134,4 +134,16 @@ router.get('/profils', async function(req, res){
   res.json(profils)
 })
 
+router.get('/profil/:id', async function(req, res){
+  const id = req.params.id
+  var idp = profils.map((obj) => obj.id)
+  const index = idp.indexOf(parseInt(id))
+  if(index == -1){
+    res.status(500).json({message: "The profil doesn't exist"})
+    return
+  }
+  res.json(profils[index])
+})
+
+
 module.exports = router
