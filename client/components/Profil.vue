@@ -1,9 +1,9 @@
 <template>
 <div id='portfolio' v-bind:user="user">
-      <div id='presentation'><p>Hello ! {{user.firstname}} {{user.lastname}}</p></div>
-      <div id='skills'></div>
-      <div id='experiences'></div>
-      <div id='other'></div>
+      <div id='presentation' class="section"><p>Hello ! {{user.firstname}} {{user.lastname}}</p></div>
+      <div id='skills' class="section"></div>
+      <div id='experiences' class="section"></div>
+      <div id='other' class="section"></div>
 </div>
 </template>
  
@@ -25,13 +25,30 @@ module.exports = {
         }
     },
 }
+
+$(document).ready(function()
+{
+    var position = $(window).scrollTop();
+
+    $(window).scroll(function(){
+        var scroll = $(window).scrollTop();
+        if(scroll > position) {
+            console.log('scrollDown');
+            $('body').scrollTo(position + window.innerHeight);
+        } if(scroll < position && position > 0) {
+            console.log('scrollUp');
+            $('html,body').animate({
+                scrollTop: (position - window.innerHeight)},
+            'slow');
+        }
+        console.log(position)
+        position = scroll
+    })
+
+});
 </script>
  
 <style scoped>
-html {
-  scroll-behavior: smooth;
-}
-
 p{
     color: white;
 }
@@ -45,7 +62,6 @@ p{
 }
 
 #portfolio > div{
-    float:left;
     width: 100%;
     height: 100vh;
     overflow: hidden;
