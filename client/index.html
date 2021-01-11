@@ -20,6 +20,7 @@
                 <router-link to='/login' v-if='user.id == null'><div class="buttons">Connexion</div></router-link>
                 <router-link to='/searchprofil' v-if='user.id == null'><div class="buttons">Profil</div></router-link>
                 <router-link to='/like' v-if='user.id == null'><div class="buttons">Profils aimés</div></router-link>
+                <div class="button" v-if='user.id != null' v-on:click='disconnectionUser()'>Deconnexion</div>
             </nav>
 
             <button v-if="user.id !== null" class="ham"></button>
