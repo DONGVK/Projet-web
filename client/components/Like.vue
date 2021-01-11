@@ -1,7 +1,7 @@
 <template>
 <div>
     <div class="container">
-      <div v-if="profil != user.id" v-for="profil in like" :key="profil" v-on:click="seeProfil(profil.id)" class="item">
+      <div v-if="profil != user.id" v-for="profil in like" :key="profil" v-on:click="seeProfil(profil)" class="item">
         {{profils[profils.findIndex(a => a.id === profil)].firstname}}
         {{profils[profils.findIndex(a => a.id === profil)].lastname}}'s profil <br>
         Domaine : {{profils[profils.findIndex(a => a.id === profil)].domain}} <br> <br>
