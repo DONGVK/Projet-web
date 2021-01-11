@@ -27,14 +27,14 @@
             <span class="bar"></span>
             <label>Mot de passe</label>
           </div>
-          <button class='button' v-on:click="nextPage()">Suivant</button>
+          <span class='button' v-on:click="nextPage()">Suivant</span>
     </div>
     <div class="secondform">
         <h2> Informations du Profil <h2>
           <div class="group">
             <span class="highlight"></span>
             <label>Domaine</label>
-              <select name="domains">
+              <select name="domains"  v-model="addProfil.domain">
                 <option value="">Votre domaine</option>
                 <option value="SE">Software Engineering</option>
                 <option value="BIA">Business Intelligence and Analytics</option>
@@ -59,16 +59,16 @@
               <input type="text" v-model="compétencetoadd" placeholder="ajouter une compétence" required/>
               <button class='button' v-on:click="ajouter()">Ajouter</button>
             </div>
-            <div class='competencemodifier'>
-              <select >
-                  <option v-for="(compétence,index) of compétences" v-bind:key="compétence" >{{compétence}}</option>
-              </select>
-              <textarea v-model="remplaceur"> </textarea><button class='button' v-on:click="modifier(remplaceur)">Modifier</button>
-            </div>
+          </div>
+          <div class="group">
+            <h4>Lien Linkedin<h4>
+            <input v-model="addProfil.linkedin" type="url" id="lkd" name="linkedin">
+            <span class="highlight"></span>
+            <span class="bar"></span>
           </div>
         
           <button class='button' v-on:click="previousPage()">Précédent</button>
-          <button  class='button' type="submit">S'inscrire</button>
+          <button  class='button' type="submit" v-on:click="addUser()">S'inscrire</button>
     </div>
     </form>
 </template>
@@ -83,24 +83,26 @@ module.exports = {
           email: '',
           password: ''
       },
+      addProfil:{firstname: "", lastname: "", domain: null, competences: [], linkedin: ""},
       compétences:['html', 'css'],
       compétencetoadd:'',
-      remplaceur:''
     }
   },
   methods: {
       addUser() {
-        this.$emit('add-user', this.newUsers)
+        for(let i = 0; i < this.compétences.length; i ++ ){
+          this.addProfil.competences.push({name: this.compétences[i]})
+        }
+        this.addProfil.firstname = this.newUsers.firstname
+        this.addProfil.lastname = this.newUsers.lastname
+        console.log("added")
+        this.$emit('add-user', this.newUsers, this.addProfil)
       },
       ajouter(){
         if(this.compétencetoadd===''){console.log('Veuillez renseigner une compétence valide')}
         else{
         this.compétences.push(this.compétencetoadd)
         }
-      },
-      modifier(remplaceur){
-        var index=this.compétences.findIndex(element=>element===compétence);
-        this.compétences(index)=this.remplaceur
       },
       supprimer(compétence){
         var index=this.compétences.findIndex(element=>element ===compétence);//https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex

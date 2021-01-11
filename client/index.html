@@ -14,11 +14,12 @@
     <body>
         <div id="app">
         <header >
-          <router-link v-if="user.id === null" to='/' class='title'><h1>Portfolio</h1></router-link>
+          <router-link v-if="user.id === null && this.$route.path != '/seeprofil' " to='/' class='title'><h1>Portfolio</h1></router-link>
             <nav>
                 <router-link to='/register' v-if='user.id == null'><div class="buttons">Inscription</div></router-link>
                 <router-link to='/login' v-if='user.id == null'><div class="buttons">Connexion</div></router-link>
                 <router-link to='/searchprofil' v-if='user.id == null'><div class="buttons">Profil</div></router-link>
+                <router-link to='/like' v-if='user.id == null'><div class="buttons">Profils aimés</div></router-link>
             </nav>
             <button v-if="user.id !== null" class="ham"></button>
           </header>
@@ -34,8 +35,12 @@
               :user="user"
               :profils="profils"
               :profil="profil"
+              :seep="seep"
+              :like="like"
               @add-user="addUser"
               @connexion-user="connexionUser"
+              @see-profil="seeProfil"
+              @like-profil="likeProfil"
             ></router-view>
           </main>
         </div>

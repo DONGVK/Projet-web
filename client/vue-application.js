@@ -3,13 +3,17 @@ const SearchProfil = window.httpVueLoader('./components/SearchProfil.vue')
 const Register = window.httpVueLoader('./components/Register.vue')
 const Login = window.httpVueLoader('./components/Login.vue')
 const Profil = window.httpVueLoader('./components/Profil.vue')
+const SeeProfil = window.httpVueLoader('./components/SeeProfil.vue')
+const Like = window.httpVueLoader('./components/Like.vue')
 
 const routes = [
   { path: '/', component: Home },
   { path: '/searchprofil', component: SearchProfil },
   { path: '/register', component: Register },
   { path: '/login', component: Login },
-  { path: '/profil', component: Profil}
+  { path: '/profil', component: Profil},
+  { path: '/seeprofil', component: SeeProfil },
+  { path: '/like', component: Like }
 ]
 
 const router = new VueRouter({
@@ -22,9 +26,15 @@ var app = new Vue({
   data: {
     user:{id: null, connected: null, firstname: '', lastname: ''},
     profils: [],
-    profil: []
+    profil: [],
+    seep: null,
+    like: []
   },
   async mounted(){
+    const seepro = await axios.get('/api/seeprofil')
+    this.seep = seepro
+    const ilikeit = await axios.get('api/like')
+    this.like = ilikeit.data
     const res = await axios.get('/api/profils')
     this.profils = res.data
     const connected = await axios.get('/api/me')
@@ -42,9 +52,20 @@ var app = new Vue({
     }
   },
   methods: {
-    async addUser (newUser) { // User registers
+    async addUser (newUser, addProfil) { // User registers
       const res = await axios.post('/api/register', {firstname: newUser.firstname, lastname: newUser.lastname ,email: newUser.email, password: newUser.password})
+      const addpro = await axios.post('/api/profils', {firstname: addProfil.firstname, lastname: addProfil.lastname ,domain: addProfil.domain, competences: addProfil.competences, linkedin: addProfil.linkedin})
+      
+      this.profils.push({
+        id: this.profils[this.profils.length - 1] + 1,
+        firstname: addProfil.firstname, 
+        lastname: addProfil.lastname ,
+        domain: addProfil.domain, 
+        competences: addProfil.competences, 
+        linkedin: addProfil.linkedin
+      })
       console.log(res)
+      console.log(addpro)
     },
     async connexionUser(user){//User log in
       try{
@@ -66,5 +87,15 @@ var app = new Vue({
         console.log(error)
       }
     },
+    async seeProfil(id){
+      const res = await axios.get('api/profil/'+id)
+      this.seep = res
+      this.$router.push('/seeprofil')
+    },
+    async likeProfil(id){
+      await axios.post('api/like', {id: id})
+      this.like.push(id)
+      console.log("L'id est : " + id)
+    }
   }
 })

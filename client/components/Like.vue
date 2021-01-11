@@ -1,10 +1,11 @@
 <template>
 <div>
     <div class="container">
-      <div v-if="profil.id != user.id" v-for="profil in profils" :key="profil.id" v-on:click="seeProfil(profil.id)" class="item">
-        {{profil.lastname}}'s profil <br>
-        Domaine : {{profil.domain}} <br> <br>
-        <img :src="profil.img"/>
+      <div v-if="profil != user.id" v-for="profil in like" :key="profil" v-on:click="seeProfil(profil.id)" class="item">
+        {{profils[profils.findIndex(a => a.id === profil)].firstname}}
+        {{profils[profils.findIndex(a => a.id === profil)].lastname}}'s profil <br>
+        Domaine : {{profils[profils.findIndex(a => a.id === profil)].domain}} <br> <br>
+        <img :src="profils[profils.findIndex(a => a.id === profil)].img"/>
       </div>
     </div>
 </div>
@@ -13,8 +14,9 @@
 <script>
 module.exports = {
   props:{
-    user: {type: Object},
-    profils: {type: Array, default: []},
+    user:{type: Object },
+    like: {type: Array, default: []},
+    profils: {type: Array, default: []}
   },
   methods: {
       seeProfil(id) {
