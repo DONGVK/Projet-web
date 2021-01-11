@@ -1,7 +1,7 @@
 <template>
   <div class="formbox">
     <div class="firstform">
-    <form v-on:submit.prevent="addUser()">
+      <form v-on:submit.prevent="addUser()">
         <h2> Inscription </h2>
           <div class="group">
             <input type='text' v-model="newUsers.lastname" required/>
@@ -27,11 +27,9 @@
             <span class="bar"></span>
             <label>Mot de passe</label>
           </div>
-          <button  class='button' type="submit">Suivant</button>
-    </form>
+          <button class='button' v-on:click="nextPage()">Suivant</button>
     </div>
     <div class="secondform">
-      <form>
         <h2> Informations du Profil <h2>
           <div class="group">
             <span class="highlight"></span>
@@ -69,17 +67,10 @@
             </div>
           </div>
         
-          
-          <div class="group">
-            <h4>Expérience<h4>
-            <textarea id="exp" name="experience">
-            </textarea>
-            <span class="highlight"></span>
-            <span class="bar"></span>
-           
-          </div>
+          <button class='button' v-on:click="previousPage()">Précédent</button>
           <button  class='button' type="submit">S'inscrire</button>
-  </div>
+    </div>
+    </form>
 </template>
  
 <script>
@@ -114,6 +105,14 @@ module.exports = {
       supprimer(compétence){
         var index=this.compétences.findIndex(element=>element ===compétence);//https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex
         this.compétences.splice(index,1);
+      },
+      nextPage(){
+        $(".firstform").hide()
+        $(".secondform").css('visibility', 'initial')
+      },
+      previousPage(){
+        $(".secondform").css('visibility', 'hidden')
+        $(".firstform").show()
       }
   }
 }
@@ -212,7 +211,6 @@ form{
   margin-left: auto;
   margin-right: auto;
   width: 80%;
-  height: 100%;
   color: white;
   font-size: 2.5rem;
   background-image: linear-gradient(rgba(56, 56, 56, 0.295),rgba(5, 5, 5, 1));
@@ -267,6 +265,15 @@ form{
 
 .button:focus { outline:0; }
 
+.firstform{
+  position: absolute;
+  top: 50%;
+}
+
+
+.secondform{
+  visibility: hidden;
+}
 
 
 </style>
