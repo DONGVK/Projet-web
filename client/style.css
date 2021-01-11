@@ -216,3 +216,66 @@ nav{
 .navbar ul li a:hover, .navbar ul li a:focus {
   border-bottom: 2px solid white;
 }
+
+/*Nav bar*/
+.toggle_btn{
+  height:30px;
+  width:30px;
+  position:relative;
+  float:right;
+  margin-right:10px;
+  margin-top:5px;
+  cursor:pointer;
+}
+.toggle_btn span{
+  height:3px;
+  background-color:aqua;
+  width:100%;
+  position:absolute;
+  top:20px;
+  left:0;
+}
+.toggle_btn span:before{
+  content:'';
+  height:3px;
+  background-color:aqua;
+  width:100%;
+  position:absolute;
+  top:-10px;
+  left:0;
+}
+.toggle_btn span:after{
+  content:'';
+  height:3px;
+  background-color:aqua;
+  width:100%;
+  position:absolute;
+  top:10px;
+  left:0;
+}
+.menu{
+  height:1000px;
+  background-color:aqua;
+  width:200px;
+}
+.menu a{
+  color:#ffffff;
+  font-family:sans-serif;
+  text-align:center;
+  display:block;
+  padding-top:30px;
+  text-decoration:none;
+}
+.logo{
+  text-transform:uppercase;
+  font-weight:bold;
+  font-size:24px;
+}
+.nav{
+  margin-left:-200px;
+  transition-duration:0.2s;
+}
+.nav_open{
+  margin-left:0;
+  transition-duration:0.2s;
+}

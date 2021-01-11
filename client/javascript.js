@@ -1,9 +1,6 @@
-/*var navbar = document.querySelector(".navbar")
-var ham = document.querySelector(".ham")
-ham.addEventListener("click", toggleHamburger)
-// toggles hamburger menu in and out when clicking on the hamburger
-function toggleHamburger(){
-    navbar.classList.toggle("showNav")
-    ham.classList.toggle("showClose")
+var btn= document.querySelector('.toggle_btn');
+  var nav=document.querySelector('menu nav');
+
+  btn.onclick=function(){
+    nav.classList.toggle('nav_open');
   }
-*/

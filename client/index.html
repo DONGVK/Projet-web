@@ -21,14 +21,20 @@
                 <router-link to='/searchprofil' v-if='user.id == null'><div class="buttons">Profil</div></router-link>
                 <router-link to='/like' v-if='user.id == null'><div class="buttons">Profils aimés</div></router-link>
             </nav>
+
             <button v-if="user.id !== null" class="ham"></button>
+            <div v-if="user.id !== null" class="toggle_btn">
+              <span></span>
+            </div>
+  
+            <div v-if='user.id !== null' class="menu nav">
+              <a v-on:click='disconnectionUser()'><img src="./src/img/logout.png" class="icon"></a>
+              <a href="#"> item 1 </a>
+              <a href="#"> item 2 </a>
+              <a href="#"> item 3 </a>
+              <a href="#"> item 4 </a>
+            </div>
           </header>
-          
-          <div v-if='user.id !== null' class="navbar">
-            <ul>
-              <li><a v-on:click='disconnectionUser()'><img src="./src/img/logout.png" class="icon"></a></li>
-            </ul>
-          </div>
 
           <main>
             <router-view
